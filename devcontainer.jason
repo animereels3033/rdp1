@@ -1,0 +1,25 @@
+{
+    "name": "My Project",
+    // You can start with a base image, e.g.,
+    "image": "mcr.microsoft.com/devcontainers/universal:latest",
+    // Or if you're using a specific base image like Ubuntu:
+    // "build": {
+    //   "dockerfile": "Dockerfile"
+    // },
+
+    "features": {
+          "ghcr.io/devcontainers/features/docker-in-docker:2": {
+                  "version": "latest", // or a specific version like "20.10"
+                  "enableNonRootDocker": "true" // Allows non-root user to run docker commands
+          }
+    },
+        // Optional: Add Docker Compose if it's not included with docker-in-docker
+        "customizations": {
+              "vscode": {
+                      "extensions": [
+                                "ms-azuretools.vscode-docker" // Useful VS Code extension for Docker
+                              ]
+              }
+        },
+            "postCreateCommand": "sudo apt update && sudo apt install -y docker-compose" // Fallback if feature doesn't cover compose
+}
